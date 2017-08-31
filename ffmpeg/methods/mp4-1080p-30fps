@@ -1,0 +1,3 @@
+#!/bin/sh
+read -p "File location: " choice
+ffmpeg -i $choice -f MP4 -ab 256k -ar 48000 -b:v 3000k -r 30 -vcodec libxvid -acodec libfaac -s 1920*1080 $choice.mp4 

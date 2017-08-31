@@ -1,0 +1,34 @@
+#!/bin/bash
+echo "1.Start a encode work"
+echo "2.Upgrade"
+echo "3.Uninstall"
+while :; do echo
+	read -p "Please Select: " choice
+	if [[ ! $choice =~ ^[1-3]$ ]]; then
+		echo "Error number."
+	else
+		break	
+	fi
+done
+
+if [[ $choice == 1 ]];then
+	bash /usr/local/ffmpeg/encode.sh
+fi
+
+if [[ $choice == 2 ]];then
+	rm -rf /usr/local/ffmpeg
+	rm -rf /usr/local/bin/meidaencode
+	cd /usr/local
+	wget https://download.kirito.moe/package/ffmpeg.zip
+	unzip ffmpeg.zip
+	cd /usr/loacl/bin
+	wget wget https://download.kirito.moe/shell/mediaencode
+	chmod +x mediaencode
+fi
+
+if [[ $choice == 3 ]];then
+	rm -rf /usr/local/ffmpeg
+	rm -rf /usr/local/ffmpeg.zip
+	rm -rf /usr/local/bin/mediaencode
+	apt remove ffmpeg
+fi
